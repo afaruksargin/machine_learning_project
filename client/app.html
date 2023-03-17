@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping Predict Price</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="app.js"> </script>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div class="content"></div>
+    <h2 class="content">Category</h2>
+    <div class="content">
+        <select class="category" name="" id="uicategory">
+            <option value="" disabled="disabled" selected="selected">Choose a category</option>
+            <option></option>
+            <option>Rajaji Nagar</option>
+        </select>
+        <h2>Shopping Mall</h2>
+            <select class="shopping_mall" name="" id="uishopping_mall">
+                <option value="" disabled="disabled" selected="selected">Choose a shopping mall</option>
+                <option>Electronic City</option>
+                <option>Rajaji Nagar</option>
+            </select>
+        <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+        <div id="uiEstimatedPrice" class="result">
+            <h2></h2>
+        </div>
+    </div>
+</body>
+
+</html>
