@@ -1,7 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify ,render_template
 import util
 
 app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
 
 @app.route('/get_category_name',methods = ["GET"])
 def get_category_names():
@@ -29,10 +33,10 @@ def predict_price():
     response = jsonify({
         "estimated_price" : util.get_estimated_price(category,shopping_mall)
     })
-    
+
     return response
 
 if __name__ == "__main__" :
     print("Starting Python Flask Server For Home Price Prediction..")
     util.load_saved_artifacts()
-    app.run()
+    app.run(debug=True)
