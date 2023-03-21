@@ -28,15 +28,15 @@ def load_saved_artifacts():
 
     return __category, __shopping_mall, __model
 
-def get_category_name(func):
-    response = func[0]
-    return response
+def get_category_name():
+    
+    return __category
 
-def get_shopping_mall_name(func):
-    response = func[1]
-    return response
+def get_shopping_mall_name():
 
-def get_estimated_price(category,shopping_mall,func):
+    return __shopping_mall
+
+def get_estimated_price(category,shopping_mall):
     try:
         loc_index = __data_columns.index(category.lower())
         loc_index1 = __data_columns.index(shopping_mall.lower())
@@ -49,8 +49,7 @@ def get_estimated_price(category,shopping_mall,func):
         x[loc_index] = 1
     if loc_index1 >= 0:
         x[loc_index1] = 1
-    model = func[2]
-    return round(model.predict([x])[0],2)
+    return round(__model.predict([x])[0],2)
 
 if __name__ == "__main__":
     load_saved_artifacts()

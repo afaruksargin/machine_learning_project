@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/get_category_name',methods = ["GET"])
 def get_category_names():
     response = jsonify({
-        'category' : util.get_category_name(util.load_saved_artifacts())   
+        'category' : util.get_category_name()   
     })
     response.headers.add("Acces-control-Allow-Origin","*")
     
@@ -15,7 +15,7 @@ def get_category_names():
 @app.route('/get_shopping_mall_name')
 def get_shopping_mall_names():
     response = jsonify({
-        'shopping_mall' : util.get_shopping_mall_name(util.load_saved_artifacts())
+        'shopping_mall' : util.get_shopping_mall_name()
     })
     response.headers.add("Acces-control-Allow-Origin","*")
     
@@ -27,11 +27,12 @@ def predict_price():
     shopping_mall = request.form["shopping_mall"]
 
     response = jsonify({
-        "estimated_price" : util.get_estimated_price(category,shopping_mall,util.load_saved_artifacts())
+        "estimated_price" : util.get_estimated_price(category,shopping_mall)
     })
-
+    
     return response
 
 if __name__ == "__main__" :
     print("Starting Python Flask Server For Home Price Prediction..")
+    util.load_saved_artifacts()
     app.run()
