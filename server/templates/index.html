@@ -36,21 +36,23 @@
 
 <body>
     <div class="content">
-        <select class="select" aria-label="Default select example">
-            <option selected>Alışveriş kategorisi seçiniz</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <br><br><br><br>
-        <select class="select" aria-label="Default select example">
-            <option selected>Alışveriş mağzası seçiniz</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <br><br>
-        <button type="submit" class="btn btn-success">Hesapla</button>
+        <form action="/predict_price", method="post">
+            <select class="select" aria-label="Default select example",id = "category", name = "category">
+                <option selected>Alışveriş kategorisi seçiniz</option>
+                {% for each in category %}
+                <option>{{each}}</option>
+                {% endfor %}
+            </select>
+            <br><br><br><br>
+            <select class="select" aria-label="Default select example",id = "shopping_mall", name = "shopping_mall">
+                <option selected>Alışveriş kategorisi seçiniz</option>
+                {% for each in shopping_mall %}
+                <option>{{each}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <button type="submit" class="btn btn-success">Hesapla</button>
+        </form>
     </div>
     
 </body>
