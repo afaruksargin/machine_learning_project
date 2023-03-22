@@ -1,22 +1,22 @@
 from flask import Flask, request, jsonify ,render_template
 import util
+import model
 from wtforms import Form , SelectField
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html",category = util.get_category_name(), shopping_mall = util.get_shopping_mall_name())
+    return render_template("index.html",category = util.get_category_name(), shopping_mall = util.get_shopping_mall_name(),response = 0)
+
 
 @app.route('/predict_price', methods = ["GET","POST"] )
 def predict_price():
     if request.method == "POST":
         category = request.form.get("category")
         shopping_mall = request.form.get("shopping_mall")
-        response = jsonify({
-            "estimated_price" : util.get_estimated_price(category,shopping_mall)
-            })
-        return response
+        response = model.model(category,shopping_mall)
+        return render_template("index.html", category = util.get_category_name(), shopping_mall = util.get_shopping_mall_name(),response = response)
     else:
         return "faruk"
 

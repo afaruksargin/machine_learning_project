@@ -34,7 +34,7 @@
 
 </style>
 
-<body>
+<body> 
     <div class="content">
         <form action="/predict_price", method="post">
             <select class="select" aria-label="Default select example",id = "category", name = "category">
@@ -53,6 +53,8 @@
             <br><br>
             <button type="submit" class="btn btn-success">Hesapla</button>
         </form>
+        <br><br>
+        <p>{{response}}</p>
     </div>
     
 </body>

@@ -49,10 +49,12 @@ def get_estimated_price(category,shopping_mall):
         x[loc_index] = 1
     if loc_index1 >= 0:
         x[loc_index1] = 1
-    return round(__model.predict([x])[0],2)
+    return __model.predict([x])[0]
 
 if __name__ == "__main__":
     load_saved_artifacts()
+    print(__data_columns)
+    print(get_estimated_price("clothing","kanyon"))
     
     
 
